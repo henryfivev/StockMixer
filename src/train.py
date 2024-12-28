@@ -147,6 +147,10 @@ for epoch in range(epochs):
         best_valid_perf = val_perf
         best_test_perf = test_perf
 
+        # 保存模型的state_dict（参数）
+        torch.save(model.state_dict(), 'best_model.pth')
+        print("Best model saved!")
+
     print('Valid performance:\n', 'mse:{:.2e}, IC:{:.2e}, RIC:{:.2e}, prec@10:{:.2e}, SR:{:.2e}'.format(val_perf['mse'], val_perf['IC'],
                                                      val_perf['RIC'], val_perf['prec_10'], val_perf['sharpe5']))
     print('Test performance:\n', 'mse:{:.2e}, IC:{:.2e}, RIC:{:.2e}, prec@10:{:.2e}, SR:{:.2e}'.format(test_perf['mse'], test_perf['IC'],
